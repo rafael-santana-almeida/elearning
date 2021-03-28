@@ -1,5 +1,5 @@
-import IUsersRepositories from "../repositories/IUsersRepositories";
-import User from "../typeorm/entities/User";
+import User from "../../../../typeorm/entities/User";
+import IUsersRepository from "../../repositories/IUsersRepository";
 
 interface ICreateUserDTO {
   name: string;
@@ -7,8 +7,8 @@ interface ICreateUserDTO {
   password: string;
 }
 
-class CreateUserService {
-  constructor(private usersRepositories: IUsersRepositories) {}
+class CreateUserUseCase {
+  constructor(private usersRepositories: IUsersRepository) {}
 
   async execute({ name, email, password }: ICreateUserDTO): Promise<User> {
     const user = await this.usersRepositories.create({ name, email, password });
@@ -17,4 +17,4 @@ class CreateUserService {
   }
 }
 
-export default CreateUserService;
+export default CreateUserUseCase;

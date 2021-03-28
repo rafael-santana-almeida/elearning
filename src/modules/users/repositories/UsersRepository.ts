@@ -1,9 +1,9 @@
 import { getRepository, Repository } from "typeorm";
 
-import User from "../typeorm/entities/User";
-import IUsersRepositories, { IUser } from "./IUsersRepositories";
+import User from "../../../typeorm/entities/User";
+import IUsersRepositories, { IUser } from "./IUsersRepository";
 
-class UsersRepositories implements IUsersRepositories {
+class UsersRepository implements IUsersRepositories {
   private ormRepository: Repository<User>;
 
   constructor() {
@@ -19,4 +19,4 @@ class UsersRepositories implements IUsersRepositories {
   }
 }
 
-export default UsersRepositories;
+export default UsersRepository;

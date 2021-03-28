@@ -1,4 +1,4 @@
-import User from "../typeorm/entities/User";
+import User from "../../../typeorm/entities/User";
 
 export interface IUser {
   name: string;
@@ -6,8 +6,8 @@ export interface IUser {
   password: string;
 }
 
-interface IUsersRepositories {
+interface IUsersRepository {
   create(data: IUser): Promise<User>;
 }
 
-export default IUsersRepositories;
+export default IUsersRepository;
