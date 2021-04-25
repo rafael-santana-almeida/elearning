@@ -7,12 +7,12 @@
   "password": "gaara.27",
   "database": "elearning",
   "entities": [
-    "./src/typeorm/entities/*.ts"
+    "./src/modules/**/entities/*.ts"
   ],
   "migrations": [
-    "./src/typeorm/migrations/*.ts"
+    "./src/database/migrations/*.ts"
   ],
   "cli": {
-    "migrationsDir": "./src/typeorm/migrations/"
+    "migrationsDir": "./src/database/migrations/"
   }
 }
