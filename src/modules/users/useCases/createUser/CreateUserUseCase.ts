@@ -1,5 +1,7 @@
-import User from "../../../../typeorm/entities/User";
-import IUsersRepository from "../../repositories/IUsersRepository";
+import { inject, injectable } from "tsyringe";
+
+import { User } from "../../entities/User";
+import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 interface ICreateUserDTO {
   name: string;
@@ -7,14 +9,18 @@ interface ICreateUserDTO {
   password: string;
 }
 
+@injectable()
 class CreateUserUseCase {
-  constructor(private usersRepositories: IUsersRepository) {}
+  constructor(
+    @inject("UsersRepository")
+    private usersRepository: IUsersRepository
+  ) {}
 
   async execute({ name, email, password }: ICreateUserDTO): Promise<User> {
-    const user = await this.usersRepositories.create({ name, email, password });
+    const user = await this.usersRepository.create({ name, email, password });
 
     return user;
   }
 }
 
-export default CreateUserUseCase;
+export { CreateUserUseCase };

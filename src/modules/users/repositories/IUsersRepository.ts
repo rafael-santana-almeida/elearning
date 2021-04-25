@@ -1,13 +1,13 @@
-import User from "../../../typeorm/entities/User";
+import { User } from "../entities/User";
 
-export interface IUser {
+interface ICreateUserDTO {
   name: string;
   email: string;
   password: string;
 }
 
 interface IUsersRepository {
-  create(data: IUser): Promise<User>;
+  create(data: ICreateUserDTO): Promise<User>;
 }
 
-export default IUsersRepository;
+export { IUsersRepository, ICreateUserDTO };
